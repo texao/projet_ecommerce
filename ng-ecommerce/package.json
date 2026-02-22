@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npx ng build",
-    "watch": "npx ng build --watch --configuration development",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ng-ecommerce": "node dist/ng-ecommerce/server/server.mjs"
   },
