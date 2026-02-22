@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "ng-ecommerce",
+    "rewrites": [
+        { 
+            "source": "/(.*)",
+            "destination": "/api"
+        } 
+    ],
+    "functions": {
+        "api/index.ts": {
+            "includeFile": "dist/ng-ecommerce/**"
+        }
+    }   
+}
