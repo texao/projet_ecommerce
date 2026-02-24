@@ -4,9 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:ssr": "ng build --configuration production && ng run ng-ecommerce:server",
-    "serve:ssr": "node dist/ng-ecommerce/server/server.mjs",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ng-ecommerce": "node dist/ng-ecommerce/server/server.mjs"
