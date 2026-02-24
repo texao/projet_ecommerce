@@ -1,11 +1,32 @@
 {
     "version": 2,
-    "public": true,
     "name": "ng-ecommerce",
-    "rewrites": [
-        { 
-            "source": "/(.*)",
-            "destination": "/api/index.js"
-        } 
+    "builds": [
+        {
+            "src": "public/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "dist/ng-ecommerce/browser/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "api/**/*.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/(.+)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/",
+            "dest": "/api/index.js"
+        }
     ]
 }
