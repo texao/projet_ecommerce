@@ -4,10 +4,6 @@
     "name": "ng-ecommerce",
     "rewrites": [
     {
-      "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff2|json))$",
-      "destination": "/$1"
-    },
-    {
       "source": "/(.*)",
       "destination": "/api/index.js"
     }
