@@ -1,14 +1,25 @@
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 
-export default async (req, res) => {
-    try {
-        const serverPath = join(__dirname, '../dist/ng-ecommerce/server/server.mjs');
-        const { reqHandler } = await import(serverPath);
-        return reqHandler(req, res); 
-    } catch (error) {
-        console.error('Error loading server:', error);
-        res.status(500).json({ error: 'Internal Server Error', details: error.message });
-    }
-}
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+
+// Servir les fichiers statiques Angular
+app.use(
+  express.static(path.join(__dirname, "../dist/ng-ecommerce/browser"))
+);
+
+// Import SSR handler
+const { reqHandler } = await import(
+  "../dist/ng-ecommerce/server/server.mjs"
+);
+
+// Toutes les autres routes passent par Angular SSR
+app.all("*", (req, res) => {
+  reqHandler(req, res);
+});
+
+export default app;

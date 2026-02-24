@@ -1,16 +1,19 @@
 {
     "version": 2,
+    "public": true,
     "name": "ng-ecommerce",
-    "buildCommand": "npm run build",
-    "installCommand": "npm install",
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/api/index.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.js"
-        }
+    "rewrites": [
+    {
+        "source": "/assets/(.*)",
+        "destination": "/assets/$1"
+    },
+    {
+        "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico))",
+        "destination": "/$1"
+    },
+    { 
+        "source": "/(.*)",
+        "destination": "/api/index.js"
+    } 
     ]
 }
