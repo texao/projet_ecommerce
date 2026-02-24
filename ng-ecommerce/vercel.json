@@ -3,14 +3,6 @@
     "public": true,
     "name": "ng-ecommerce",
     "rewrites": [
-   {
-      "src": "^/assets/(.*)",
-      "dest": "/dist/ng-ecommerce/browser/assets/$1"
-    },
-    {
-      "src": "^/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico))$",
-      "dest": "/dist/ng-ecommerce/browser/$1"
-    },
     { 
         "source": "/(.*)",
         "destination": "/api/index.js"

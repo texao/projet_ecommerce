@@ -7,21 +7,19 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Dossier browser Angular
-const browserPath = path.join(
+const browserDistFolder = path.join(
   __dirname,
   "../dist/ng-ecommerce/browser"
 );
 
-// Servir les fichiers statiques
-app.use(express.static(browserPath));
+// TRÈS IMPORTANT : servir les fichiers statiques AVANT le SSR
+app.use(express.static(browserDistFolder));
 
-// Import du SSR Angular
 const { reqHandler } = await import(
   "../dist/ng-ecommerce/server/server.mjs"
 );
 
-// Toutes les autres routes → SSR
+// Toutes les autres routes passent au SSR
 app.all("*", (req, res) => {
   reqHandler(req, res);
 });
